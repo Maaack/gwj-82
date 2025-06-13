@@ -1,4 +1,3 @@
-@tool
 extends ScrollContainer
 
 signal end_reached

@@ -14,12 +14,10 @@ grow_vertical = 2
 script = ExtResource("4")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 script = ExtResource("2_ak7hi")
@@ -30,10 +28,12 @@ size_flags_horizontal = 3
 
 [node name="HeaderSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
 
 [node name="CreditsLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -49,6 +49,7 @@ max_image_width = 80
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
 
 [connection signal="end_reached" from="ScrollContainer" to="." method="_on_scroll_container_end_reached"]
