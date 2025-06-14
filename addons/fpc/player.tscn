@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://duhgg3gjt08hn" path="res://addons/fpc/mesh.gd" id="2_v4cal"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="Script" uid="uid://bjuwilih0xk1w" path="res://addons/fpc/mine_detector.gd" id="5_8q84s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4cal"]
 albedo_color = Color(2.14182e-06, 0.585037, 0.13866, 1)
@@ -331,6 +332,10 @@ MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4cal"]
+height = 4.0
+radius = 10.0
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 2
@@ -418,3 +423,12 @@ target_position = Vector3(0, 0.5, 0)
 [node name="EditorModule" type="Node" parent="." node_paths=PackedStringArray("CHARACTER")]
 script = ExtResource("3_v3ckk")
 CHARACTER = NodePath("..")
+
+[node name="MineDetector" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8q84s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MineDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_v4cal")
