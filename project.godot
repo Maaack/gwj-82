@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 folder_colors={
 "res://addons/fpc/": "purple",
+"res://assets/JDSherbert - Ultimate UI SFX Pack/": "purple",
 "res://assets/kenney_prototype-textures/": "purple",
 "res://scenes/prototype/": "purple"
 }
