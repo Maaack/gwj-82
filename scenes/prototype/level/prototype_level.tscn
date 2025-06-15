@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dmxyor1xbjsm3"]
+[gd_scene load_steps=19 format=4 uid="uid://dmxyor1xbjsm3"]
 
 [ext_resource type="Texture2D" uid="uid://b6ljymftibfwi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_aekvs"]
 [ext_resource type="Script" uid="uid://n04tw1wdgr7n" path="res://scenes/prototype/level/prototype_level.gd" id="1_r4ymw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/player.tscn" id="4_o66c3"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="5_ltct3"]
 [ext_resource type="PackedScene" uid="uid://droyqvact51w1" path="res://scenes/prototype/exit_area_3d/exit_area_3d.tscn" id="7_o66c3"]
+[ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="8_o66c3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bbuia"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -162,6 +163,9 @@ text = "Try again?"
 
 [node name="ExitArea3D" parent="." instance=ExtResource("7_o66c3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
+
+[node name="Ghost3D" parent="." instance=ExtResource("8_o66c3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 
 [connection signal="pressed" from="KilledWarning/PanelContainer/VBoxContainer/TryAgainButton" to="KilledWarning" method="_on_try_again_button_pressed"]
 [connection signal="player_exited" from="ExitArea3D" to="." method="_on_exit_area_3d_player_exited"]

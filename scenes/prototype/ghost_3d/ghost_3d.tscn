@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://db4jhwp7kgklx"]
+
+[ext_resource type="Script" uid="uid://bnlar67cok6fb" path="res://scenes/prototype/ghost_3d/ghost_3d.gd" id="1_x81q7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x81q7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x81q7"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cpoi1"]
+material = SubResource("StandardMaterial3D_x81q7")
+
+[node name="Ghost3D" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_x81q7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_x81q7")
+disabled = true
+debug_color = Color(0.555991, 0.399092, 0.998215, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_cpoi1")
+
+[node name="WhispersStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="TrackRefreshTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="TrackRefreshTimer" to="." method="_on_track_refresh_timer_timeout"]
