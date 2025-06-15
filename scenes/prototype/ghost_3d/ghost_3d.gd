@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
-const minimum_distance_squared = 1
+signal killed
+
+const minimum_distance_squared = 0.25
 
 @export var move_speed : float = 50
 
@@ -22,3 +24,8 @@ func _process(delta: float) -> void:
 		move_direction = move_direction.normalized()
 		velocity = move_speed * delta * move_direction
 		move_and_slide()
+
+func _on_area_3d_body_entered(body):
+	if body == player_character:
+		body.immobile = true
+		killed.emit()
