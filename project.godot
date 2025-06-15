@@ -43,6 +43,7 @@ folder_colors={
 
 player=""
 mine=""
+ghost=""
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://db4jhwp7kgklx"]
+[gd_scene load_steps=6 format=3 uid="uid://db4jhwp7kgklx"]
 
 [ext_resource type="Script" uid="uid://bnlar67cok6fb" path="res://scenes/prototype/ghost_3d/ghost_3d.gd" id="1_x81q7"]
 
@@ -11,7 +11,9 @@ albedo_color = Color(0, 0, 0, 0.25098)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cpoi1"]
 material = SubResource("StandardMaterial3D_x81q7")
 
-[node name="Ghost3D" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x81q7"]
+
+[node name="Ghost3D" type="CharacterBody3D" groups=["ghost"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_x81q7")
@@ -32,4 +34,13 @@ mesh = SubResource("CapsuleMesh_cpoi1")
 wait_time = 0.25
 autostart = true
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_x81q7")
+
 [connection signal="timeout" from="TrackRefreshTimer" to="." method="_on_track_refresh_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
