@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://droyqvact51w1"]
+
+[ext_resource type="Script" uid="uid://d0i5d8tiygrn5" path="res://scenes/prototype/exit_area_3d/exit_area_3d.gd" id="1_ofwa3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_peygb"]
+size = Vector3(4, 4, 4)
+
+[node name="ExitArea3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ofwa3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_peygb")
