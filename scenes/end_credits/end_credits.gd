@@ -7,6 +7,7 @@ extends ScrollingCredits
 func _on_scroll_container_end_reached() -> void:
 	%EndMessagePanel.show()
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	super._on_scroll_container_end_reached()
 
 func _on_MenuButton_pressed() -> void:
