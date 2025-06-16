@@ -1,5 +1,5 @@
 class_name LevelState
 extends Resource
 
-@export var color : Color
+@export var mines_removed : Array[StringName]
 @export var tutorial_read : bool = false
