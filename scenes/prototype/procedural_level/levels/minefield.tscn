@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
-[ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/tiles/base_mined_tile.tscn" id="2_5ieeo"]
+[ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
 [ext_resource type="Texture2D" uid="uid://041vxf1v05vc" path="res://assets/kenney_prototype-textures/PNG/Light/texture_12.png" id="2_284y0"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/player.tscn" id="4_pxrxr"]
-[ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/tile_builder.gd" id="5_umyse"]
-[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/tiles/base_tile.tscn" id="6_2bvvl"]
+[ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/zone_builder.gd" id="5_umyse"]
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="6_2bvvl"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
@@ -81,15 +81,15 @@ shape = SubResource("ConcavePolygonShape3D_2bvvl")
 mesh = SubResource("ArrayMesh_7tvm6")
 skeleton = NodePath("../..")
 
-[node name="TileBuilder" type="Node" parent="."]
+[node name="ZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
 script = ExtResource("5_umyse")
-tile_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl")])
-tile_size = Vector2(8, 8)
-level_tile_size = Vector2(4, 4)
+zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl")])
+zone_size = Vector2(8, 8)
+level_zone_size = Vector2(4, 4)
 offset = Vector2(-12, -12)
+zone_container = NodePath("../Zones")
 
-[node name="Tiles" type="Node3D" parent="."]
-unique_name_in_owner = true
+[node name="Zones" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_pxrxr")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.99269, 0, 9.64208)
