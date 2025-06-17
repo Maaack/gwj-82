@@ -2,15 +2,34 @@
 
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://duhgg3gjt08hn" path="res://addons/fpc/mesh.gd" id="2_v4cal"]
+[ext_resource type="Script" uid="uid://bueph5jlyk3up" path="res://scenes/prototype/scan_device.gd" id="3_jwp2a"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" uid="uid://bjuwilih0xk1w" path="res://addons/fpc/mine_detector.gd" id="5_8q84s"]
+[ext_resource type="AudioStream" uid="uid://bkvkmd0pg6vo3" path="res://assets/JDSherbert - Ultimate UI SFX Pack/JDSherbert - Ultimate UI SFX Pack - Select - 2.ogg" id="4_gs1dw"]
+[ext_resource type="Texture2D" uid="uid://bowr78gfvinp5" path="res://assets/icons/land-mine.svg" id="5_jwp2a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4cal"]
 albedo_color = Color(2.14182e-06, 0.585037, 0.13866, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8q84s"]
 material = SubResource("StandardMaterial3D_v4cal")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pr7y4"]
+font_size = 42
+outline_size = 20
+outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8q84s"]
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.313726)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gs1dw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4cal"]
+height = 8.0
+radius = 10.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
 
@@ -99,6 +118,9 @@ _data = {
 &"RESET": SubResource("Animation_j8cx7"),
 &"crouch": SubResource("Animation_5ec5e")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_pr7y4"]
+size = Vector3(0.3, 0.5, 0.1)
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -324,31 +346,6 @@ _data = {
 &"land_right": SubResource("Animation_vsknp")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8q84s"]
-viewport_path = NodePath("Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gs1dw"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_8q84s")
-uv1_scale = Vector3(0.935, 0.935, 0.935)
-
-[sub_resource type="QuadMesh" id="QuadMesh_jwp2a"]
-material = SubResource("StandardMaterial3D_gs1dw")
-size = Vector2(0.15, 0.2)
-
-[sub_resource type="LabelSettings" id="LabelSettings_pr7y4"]
-font_size = 42
-outline_size = 20
-outline_color = Color(0.111197, 0.111197, 0.111197, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_8q84s"]
-font_size = 32
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 0.313726)
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gs1dw"]
-
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -356,10 +353,6 @@ MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4cal"]
-height = 4.0
-radius = 10.0
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -383,12 +376,124 @@ controls = {
 &"RIGHT": "move_right",
 &"SPRINT": "sprint"
 }
+view_bobbing = false
 
 [node name="MeshForEditor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_8q84s")
 script = ExtResource("2_v4cal")
+
+[node name="Scanner" type="Area3D" parent="." node_paths=PackedStringArray("scanner_mesh", "beep_audio", "flash_light", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_jwp2a")
+scanner_mesh = NodePath("../Head/Camera/ScannerQuadMesh")
+beep_audio = NodePath("AudioStreamPlayer")
+flash_light = NodePath("../Head/Camera/ScannerQuadMesh/OmniLight3D")
+camera = NodePath("../Head/Camera")
+held_position = Vector3(0.299712, -0.426606, -0.695331)
+held_rotation = Vector3(-0.701741, -0.96353, 0.295337)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Scanner"]
+stream = ExtResource("4_gs1dw")
+volume_db = -25.0
+pitch_scale = 1.5
+bus = &"Scanner"
+
+[node name="ScannerCanvasLayer" type="CanvasLayer" parent="Scanner"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Scanner/ScannerCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1271.0
+offset_top = 54.0
+offset_right = -2072.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Scanner/ScannerCanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(479, 640)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 640.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MINE-FINDR 2.0"
+label_settings = SubResource("LabelSettings_pr7y4")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label2" type="Label" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scanning..."
+label_settings = SubResource("LabelSettings_8q84s")
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gs1dw")
+
+[node name="ProgressBar" type="ProgressBar" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="HSeparator3" type="HSeparator" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gs1dw")
+
+[node name="CenterContainer" type="CenterContainer" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+self_modulate = Color(1, 0.392157, 0.392157, 1)
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("5_jwp2a")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scanner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_v4cal")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -404,6 +509,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
 
+[node name="ScannerQuadMesh" type="MeshInstance3D" parent="Head/Camera"]
+transform = Transform3D(0.70022, 0.341091, -0.627174, 0.22229, 0.730653, 0.645548, 0.678438, -0.591441, 0.435797, 0.299712, -0.426606, -0.695331)
+mesh = SubResource("BoxMesh_pr7y4")
+skeleton = NodePath("../../../Scanner")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Head/Camera/ScannerQuadMesh"]
+transform = Transform3D(1, 4.91738e-07, 5.36442e-07, -4.47035e-08, 1, -2.98023e-08, -2.68221e-07, 0, 1, 0.117932, 0.258387, 0.139265)
+light_color = Color(0, 0.909804, 0.568627, 1)
+light_size = 0.1
+omni_range = 1.0
+
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
 &"": SubResource("AnimationLibrary_o0unb")
@@ -415,81 +531,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_qeg5r")
 }
 speed_scale = 4.0
-
-[node name="Scanner" type="Node3D" parent="Head"]
-
-[node name="ScannerQuadMesh" type="MeshInstance3D" parent="Head/Scanner"]
-transform = Transform3D(0.875253, 0.142168, -0.462298, 7.45058e-09, 0.955824, 0.29394, 0.483664, -0.257272, 0.836588, 0.180074, -0.133757, -0.245605)
-mesh = SubResource("QuadMesh_jwp2a")
-
-[node name="ScannerCanvasLayer" type="CanvasLayer" parent="Head/Scanner"]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Scanner/ScannerCanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1271.0
-offset_top = 54.0
-offset_right = -2039.0
-offset_bottom = -26.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer"]
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="Control" type="Control" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 640.0
-
-[node name="PanelContainer" type="PanelContainer" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "MINE-FINDR 2.0"
-label_settings = SubResource("LabelSettings_pr7y4")
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-
-[node name="Label2" type="Label" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Scanning..."
-label_settings = SubResource("LabelSettings_8q84s")
-horizontal_alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gs1dw")
-
-[node name="ProgressBar" type="ProgressBar" parent="Head/Scanner/ScannerCanvasLayer/SubViewportContainer/SubViewport/Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-indeterminate = true
-editor_preview_indeterminate = false
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -524,12 +565,3 @@ target_position = Vector3(0, 0.5, 0)
 [node name="EditorModule" type="Node" parent="." node_paths=PackedStringArray("CHARACTER")]
 script = ExtResource("3_v3ckk")
 CHARACTER = NodePath("..")
-
-[node name="MineDetector" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 4
-script = ExtResource("5_8q84s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MineDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("CylinderShape3D_v4cal")
