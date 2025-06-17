@@ -11,6 +11,7 @@ func _on_exit_area_3d_player_exited():
 func _on_mine_exploded(node: Node3D):
 	var _original_position = mine_position_map[node]
 	level_state.mines_removed.append(_original_position)
+	level_state.starting_ghosts += 1
 
 func open_tutorials() -> void:
 	level_state.tutorial_read = true
