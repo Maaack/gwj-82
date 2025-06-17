@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cldtynfevo0tu"]
+
+[ext_resource type="Texture2D" uid="uid://b6ljymftibfwi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_doxrb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxj75"]
+points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa353"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.890196)
+albedo_texture = ExtResource("1_doxrb")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p66r1"]
+material = SubResource("StandardMaterial3D_qa353")
+size = Vector2(8, 8)
+
+[node name="Tile" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConvexPolygonShape3D_oxj75")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_p66r1")
+skeleton = NodePath("../../..")

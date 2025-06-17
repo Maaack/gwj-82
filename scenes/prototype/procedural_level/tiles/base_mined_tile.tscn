@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://chcvilveq5xok"]
+
+[ext_resource type="Texture2D" uid="uid://b6ljymftibfwi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_lu4oi"]
+[ext_resource type="PackedScene" uid="uid://ca22lfd8l684h" path="res://scenes/prototype/mine.tscn" id="2_lxc3o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxj75"]
+points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa353"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.890196)
+albedo_texture = ExtResource("1_lu4oi")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p66r1"]
+material = SubResource("StandardMaterial3D_qa353")
+size = Vector2(8, 8)
+
+[node name="Tile" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConvexPolygonShape3D_oxj75")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_p66r1")
+skeleton = NodePath("../../..")
+
+[node name="Mines" type="Node3D" parent="."]
+
+[node name="Mine" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -1)
+
+[node name="Mine2" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 1)
+
+[node name="Mine3" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, -3)
+
+[node name="Mine4" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -1)
+
+[node name="Mine5" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, -1)
+
+[node name="Mine6" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, -3)
+
+[node name="Mine7" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 1)
+
+[node name="Mine8" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1)
+
+[node name="Mine10" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 3)
+
+[node name="Mine11" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 3)
+
+[node name="Mine12" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 3)
+
+[node name="Mine9" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -3)
+
+[node name="Mine13" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -1)
+
+[node name="Mine14" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 1)
+
+[node name="Mine15" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 3)
+
+[node name="Mine16" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -3)

@@ -29,8 +29,8 @@ focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 [node name="LevelListLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("4_7aihr")
 level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/prototype/level/prototype_level.tscn"])
-directory = "res://scenes/prototype/level"
+files = Array[String](["res://scenes/prototype/procedural_level/levels/minefield.tscn"])
+directory = "res://scenes/prototype/procedural_level/levels"
 
 [node name="LevelListManager" type="Node" parent="." node_paths=PackedStringArray("level_list_loader", "level_loading_screen")]
 script = ExtResource("5_3re04")
