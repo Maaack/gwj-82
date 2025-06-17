@@ -153,3 +153,4 @@ text = "Try again?"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
 [connection signal="pressed" from="KilledWarning/PanelContainer/VBoxContainer/TryAgainButton" to="KilledWarning" method="_on_try_again_button_pressed"]
+[connection signal="player_exited" from="ExitArea3D" to="." method="_on_exit_area_3d_player_exited"]
