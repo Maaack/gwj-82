@@ -4,9 +4,14 @@ signal level_won
 
 var level_state : LevelState
 var mine_position_map : Dictionary[Node3D, Vector3]
+var dog_tag_recovered : bool = false
+
+func _on_dog_tag_item_picked_up():
+	dog_tag_recovered = true
 
 func _on_exit_area_3d_player_exited():
-	level_won.emit()
+	if dog_tag_recovered:
+		level_won.emit()
 
 func _on_mine_exploded(node: Node3D):
 	var _original_position = mine_position_map[node]

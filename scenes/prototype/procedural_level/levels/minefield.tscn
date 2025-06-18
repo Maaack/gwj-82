@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=20 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
 [ext_resource type="PackedScene" uid="uid://droyqvact51w1" path="res://scenes/prototype/exit_area_3d/exit_area_3d.tscn" id="9_7tvm6"]
+[ext_resource type="PackedScene" uid="uid://j4fgldo1orci" path="res://scenes/prototype/procedural_level/items/dog_tag.tscn" id="11_7q35e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxrxr"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -151,5 +152,8 @@ text = "Try again?"
 [node name="ExitArea3D" parent="." instance=ExtResource("9_7tvm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
+[node name="DogTagItem" parent="." instance=ExtResource("11_7q35e")]
+
 [connection signal="pressed" from="KilledWarning/PanelContainer/VBoxContainer/TryAgainButton" to="KilledWarning" method="_on_try_again_button_pressed"]
 [connection signal="player_exited" from="ExitArea3D" to="." method="_on_exit_area_3d_player_exited"]
+[connection signal="picked_up" from="DogTagItem" to="." method="_on_dog_tag_item_picked_up"]
