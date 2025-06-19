@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dge3g6ecaj8lh" path="res://scenes/prototype/procedural_level/items/item.gd" id="1_b5mcn"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5mcn"]
+size = Vector3(0.5, 0.1, 0.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ild3n"]
 albedo_color = Color(1, 1, 0, 1)
 
@@ -11,19 +14,25 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ild3n"]
 
-[node name="DogTagItem" type="Node3D"]
+[node name="DogTagItem3D" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_b5mcn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b5mcn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137734, 0.00525868, -0.00252104)
 mesh = SubResource("BoxMesh_b5mcn")
+skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 0
 collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_ild3n")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

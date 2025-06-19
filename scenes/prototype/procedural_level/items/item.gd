@@ -1,5 +1,5 @@
 class_name Item3D
-extends Node3D
+extends CharacterBody3D
 
 signal picked_up
 
