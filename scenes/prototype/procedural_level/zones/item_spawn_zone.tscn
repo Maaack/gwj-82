@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dilxg26rbhlvj"]
+
+[ext_resource type="Texture2D" uid="uid://b6ljymftibfwi" path="res://assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_5fxta"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxj75"]
+points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5fxta"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa353"]
+albedo_color = Color(1, 1, 1, 0.890196)
+albedo_texture = ExtResource("1_5fxta")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p66r1"]
+material = SubResource("StandardMaterial3D_qa353")
+size = Vector2(8, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66u48"]
+material = SubResource("StandardMaterial3D_qa353")
+
+[node name="Tile" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConvexPolygonShape3D_oxj75")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_5fxta")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_p66r1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_66u48")
+
+[node name="ItemSpawnMarker3D" type="Marker3D" parent="." groups=["item_spawner"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
