@@ -16,7 +16,7 @@ uv1_world_triplanar = true
 material = SubResource("StandardMaterial3D_qa353")
 size = Vector2(8, 8)
 
-[node name="Tile" type="Node3D"]
+[node name="Zone" type="Node3D"]
 
 [node name="Ground" type="StaticBody3D" parent="."]
 

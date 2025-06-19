@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwtth7ep2bvkt"]
+
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_4o2ho"]
+[ext_resource type="PackedScene" uid="uid://crigtorpmkfqk" path="res://assets/models/Bunker/B_Bottom.glb" id="2_10suf"]
+[ext_resource type="PackedScene" uid="uid://bok6aw6nccyf1" path="res://assets/models/Bunker/B_Top.glb" id="3_gi3bb"]
+
+[node name="BunkerZone" instance=ExtResource("1_4o2ho")]
+
+[node name="B_Bottom" parent="." index="1" instance=ExtResource("2_10suf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0313843, 0.737645, 0.850192)
+
+[node name="B_Top" parent="." index="2" instance=ExtResource("3_gi3bb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703015, 2.16664, 0.519016)
