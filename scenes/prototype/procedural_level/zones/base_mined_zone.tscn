@@ -26,7 +26,6 @@ shape = SubResource("ConvexPolygonShape3D_oxj75")
 
 [node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_p66r1")
-skeleton = NodePath("../../..")
 
 [node name="Mines" type="Node3D" parent="."]
 
