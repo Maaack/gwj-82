@@ -2,15 +2,17 @@ extends Node3D
 
 signal level_won
 
+@export var zone_builder : ZoneBuilder
+
 var level_state : LevelState
 var mine_position_map : Dictionary[Node3D, Vector3]
-var dog_tag_recovered : bool = false
+var item_recovered : bool = false
 
-func _on_dog_tag_item_picked_up():
-	dog_tag_recovered = true
+func _on_item_picked_up():
+	item_recovered = true
 
 func _on_exit_area_3d_player_exited():
-	if dog_tag_recovered:
+	if item_recovered:
 		level_won.emit()
 
 func _on_mine_exploded(node: Node3D):
@@ -21,6 +23,9 @@ func _on_mine_exploded(node: Node3D):
 func open_tutorials() -> void:
 	level_state.tutorial_read = true
 
+func _on_item_added(item : Item3D) -> void:
+	item.picked_up.connect(_on_item_picked_up)
+
 func _ready() -> void:
 	level_state = GameState.get_level_state(scene_file_path)
 	var mines := get_tree().get_nodes_in_group(&"mine")
@@ -30,3 +35,4 @@ func _ready() -> void:
 			mine.queue_free()
 		else:
 			mine.exploded.connect(_on_mine_exploded.bind(mine))
+	zone_builder.item_added.connect(_on_item_added)
