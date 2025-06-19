@@ -44,6 +44,7 @@ folder_colors={
 player=""
 mine=""
 ghost=""
+item_spawner=""
 
 [input]
 

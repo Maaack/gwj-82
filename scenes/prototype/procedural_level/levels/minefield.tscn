@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=23 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/player.tscn" id="4_pxrxr"]
 [ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/zone_builder.gd" id="5_umyse"]
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="6_2bvvl"]
+[ext_resource type="PackedScene" uid="uid://dilxg26rbhlvj" path="res://scenes/prototype/procedural_level/zones/item_spawn_zone.tscn" id="6_4xi07"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
 [ext_resource type="Script" uid="uid://bcouw4v4cd6oa" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
@@ -56,8 +57,9 @@ content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.54902)
 
-[node name="Minefield" type="Node3D"]
+[node name="Minefield" type="Node3D" node_paths=PackedStringArray("zone_builder")]
 script = ExtResource("1_284y0")
+zone_builder = NodePath("ZoneBuilder")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -86,11 +88,12 @@ skeleton = NodePath("../..")
 
 [node name="ZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
 script = ExtResource("5_umyse")
-zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl")])
+zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_4xi07"), ExtResource("6_4xi07"), ExtResource("6_4xi07")])
 zone_size = Vector2(8, 8)
 level_zone_size = Vector2(4, 4)
 offset = Vector2(-12, -12)
 zone_container = NodePath("../Zones")
+item_scenes = Array[PackedScene]([ExtResource("11_7q35e")])
 
 [node name="Zones" type="Node3D" parent="."]
 
@@ -189,10 +192,7 @@ text = "Try again?"
 [node name="ExitArea3D" parent="." instance=ExtResource("9_7tvm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 
-[node name="DogTagItem" parent="." instance=ExtResource("11_7q35e")]
-
 [connection signal="pressed" from="KilledWarning/PanelContainer/VBoxContainer/TryAgainButton" to="KilledWarning" method="_on_try_again_button_pressed"]
 [connection signal="player_exited" from="ExitArea3D" to="." method="_on_exit_area_3d_player_exited"]
-[connection signal="picked_up" from="DogTagItem" to="." method="_on_dog_tag_item_picked_up"]
 
 [editable path="Player"]
