@@ -1,3 +1,4 @@
+class_name Item3D
 extends Node3D
 
 signal picked_up
