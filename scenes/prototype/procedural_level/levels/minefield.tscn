@@ -1,17 +1,23 @@
-[gd_scene load_steps=23 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=29 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
 [ext_resource type="Texture2D" uid="uid://041vxf1v05vc" path="res://assets/kenney_prototype-textures/PNG/Light/texture_12.png" id="2_284y0"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/player.tscn" id="4_pxrxr"]
+[ext_resource type="PackedScene" uid="uid://bwtth7ep2bvkt" path="res://scenes/prototype/procedural_level/zones/bunker_zone.tscn" id="5_pvu0y"]
 [ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/zone_builder.gd" id="5_umyse"]
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="6_2bvvl"]
 [ext_resource type="PackedScene" uid="uid://dilxg26rbhlvj" path="res://scenes/prototype/procedural_level/zones/item_spawn_zone.tscn" id="6_4xi07"]
+[ext_resource type="PackedScene" uid="uid://c27ylt0j3ut1v" path="res://scenes/prototype/procedural_level/zones/crater_zone.tscn" id="6_def2w"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
 [ext_resource type="Script" uid="uid://bcouw4v4cd6oa" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
+[ext_resource type="PackedScene" uid="uid://dxef78y0fab4e" path="res://scenes/prototype/procedural_level/zones/rubble_zone.tscn" id="7_yjv8o"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
+[ext_resource type="PackedScene" uid="uid://bojeekan6h0gc" path="res://scenes/prototype/procedural_level/zones/sandbag_zone.tscn" id="8_f2x5d"]
 [ext_resource type="PackedScene" uid="uid://droyqvact51w1" path="res://scenes/prototype/exit_area_3d/exit_area_3d.tscn" id="9_7tvm6"]
+[ext_resource type="PackedScene" uid="uid://c5hypqwe70qdk" path="res://scenes/prototype/procedural_level/zones/walled_zone.tscn" id="9_hcaoa"]
+[ext_resource type="PackedScene" uid="uid://cg545hlmaa35g" path="res://scenes/prototype/procedural_level/zones/wooded_zone.tscn" id="10_x0w3f"]
 [ext_resource type="Script" path="res://scenes/prototype/procedural_level/levels/hints_control.gd" id="11_4xi07"]
 [ext_resource type="PackedScene" uid="uid://j4fgldo1orci" path="res://scenes/prototype/procedural_level/items/dog_tag.tscn" id="11_7q35e"]
 
@@ -88,7 +94,7 @@ skeleton = NodePath("../..")
 
 [node name="ZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
 script = ExtResource("5_umyse")
-zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_4xi07"), ExtResource("6_4xi07"), ExtResource("6_4xi07")])
+zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("5_pvu0y"), ExtResource("6_def2w"), ExtResource("7_yjv8o"), ExtResource("8_f2x5d"), ExtResource("9_hcaoa"), ExtResource("10_x0w3f"), ExtResource("6_2bvvl"), ExtResource("6_4xi07"), ExtResource("6_4xi07"), ExtResource("6_4xi07")])
 zone_size = Vector2(8, 8)
 level_zone_size = Vector2(4, 4)
 offset = Vector2(-12, -12)
