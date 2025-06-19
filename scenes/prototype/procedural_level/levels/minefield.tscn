@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=22 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/zone_builder.gd" id="5_umyse"]
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="6_2bvvl"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
+[ext_resource type="Script" uid="uid://bcouw4v4cd6oa" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
 [ext_resource type="PackedScene" uid="uid://droyqvact51w1" path="res://scenes/prototype/exit_area_3d/exit_area_3d.tscn" id="9_7tvm6"]
+[ext_resource type="Script" path="res://scenes/prototype/procedural_level/levels/hints_control.gd" id="11_4xi07"]
 [ext_resource type="PackedScene" uid="uid://j4fgldo1orci" path="res://scenes/prototype/procedural_level/items/dog_tag.tscn" id="11_7q35e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxrxr"]
@@ -96,6 +98,11 @@ zone_container = NodePath("../Zones")
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.99269, 0, 9.64208)
 base_speed = 4.0
 
+[node name="ItemInteractionRayCast3D" type="RayCast3D" parent="Player/Head" index="3"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 16
+script = ExtResource("7_rr5jj")
+
 [node name="GhostSpawner" type="Node3D" parent="." node_paths=PackedStringArray("ghosts_container")]
 script = ExtResource("7_s6wb3")
 ghost_scene = ExtResource("7_2bvvl")
@@ -105,7 +112,36 @@ ring_outer_radius = 44.0
 
 [node name="Ghosts" type="Node3D" parent="."]
 
-[node name="KilledWarning" type="Control" parent="." node_paths=PackedStringArray("warning_panel", "killed_label")]
+[node name="HintsControl" type="Control" parent="." node_paths=PackedStringArray("item_interaction_ray_cast", "pick_up_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("11_4xi07")
+item_interaction_ray_cast = NodePath("../Player/Head/ItemInteractionRayCast3D")
+pick_up_label = NodePath("PickUpLabel")
+
+[node name="PickUpLabel" type="Label" parent="HintsControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 76.5
+offset_right = 20.0
+offset_bottom = 99.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pick Up (E)"
+
+[node name="KilledWarning" type="Control" parent="." node_paths=PackedStringArray("warning_panel", "killed_label", "ghost_spawner")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,6 +152,7 @@ mouse_filter = 2
 script = ExtResource("8_2bvvl")
 warning_panel = NodePath("PanelContainer")
 killed_label = NodePath("PanelContainer/VBoxContainer/KilledLabel")
+ghost_spawner = NodePath("../GhostSpawner")
 
 [node name="PanelContainer" type="PanelContainer" parent="KilledWarning"]
 visible = false
@@ -157,3 +194,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 [connection signal="pressed" from="KilledWarning/PanelContainer/VBoxContainer/TryAgainButton" to="KilledWarning" method="_on_try_again_button_pressed"]
 [connection signal="player_exited" from="ExitArea3D" to="." method="_on_exit_area_3d_player_exited"]
 [connection signal="picked_up" from="DogTagItem" to="." method="_on_dog_tag_item_picked_up"]
+
+[editable path="Player"]
