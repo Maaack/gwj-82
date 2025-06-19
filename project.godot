@@ -103,6 +103,7 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 3d_physics/layer_2="player"
 3d_physics/layer_3="mines"
 3d_physics/layer_4="scanner"
+3d_physics/layer_5="items"
 
 [maaacks_game_template]
 
