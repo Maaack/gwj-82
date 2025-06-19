@@ -3,7 +3,10 @@ extends CharacterBody3D
 
 signal picked_up
 
-func _on_area_3d_body_entered(body : Node3D):
+func pick_up() -> void:
+	picked_up.emit()
+	queue_free()
+
+func _on_area_3d_body_entered(body : Node3D) -> void:
 	if body.is_in_group(&"player"):
-		picked_up.emit()
-		queue_free()
+		pick_up()

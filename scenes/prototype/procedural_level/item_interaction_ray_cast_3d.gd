@@ -16,6 +16,11 @@ func _process(delta):
 			if detected_item == null:
 				detected_item = collider
 				item_found.emit(detected_item)
-	else:
+	elif detected_item:
 		item_lost.emit(detected_item)
 		detected_item = null
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed(&"interact"):
+		if detected_item:
+			detected_item.pick_up()
