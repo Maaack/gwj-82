@@ -28,4 +28,5 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body):
 	if body == player_character:
 		body.immobile = true
+		$Grabbed.play()
 		killed.emit()
