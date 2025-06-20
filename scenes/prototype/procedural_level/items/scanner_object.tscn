@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4e1a4vatr3bd"]
+[gd_scene load_steps=7 format=3 uid="uid://c4e1a4vatr3bd"]
 
 [ext_resource type="Script" uid="uid://bjuwilih0xk1w" path="res://addons/fpc/scanner_object.gd" id="1_5diue"]
+[ext_resource type="PackedScene" uid="uid://b5qfcgoc6w08h" path="res://scenes/models/scanner.tscn" id="2_eid36"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8q84s"]
 radius = 8.0
@@ -19,6 +20,8 @@ radius = 0.8
 [node name="ScannerObject" type="Area3D" node_paths=PackedStringArray("sfx", "light", "timer")]
 collision_layer = 8
 collision_mask = 4
+input_ray_pickable = false
+monitorable = false
 script = ExtResource("1_5diue")
 sfx = NodePath("SFX")
 light = NodePath("OmniLight3D")
@@ -28,8 +31,12 @@ timer = NodePath("Timer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("SphereShape3D_8q84s")
 
+[node name="Scanner" parent="." instance=ExtResource("2_eid36")]
+transform = Transform3D(-1.09278e-07, 2.77496e-08, 1.428, 2.5, -2.77496e-08, 6.24199e-08, 1.09278e-07, 0.634837, -6.24199e-08, 0.00315142, 0.172902, -0.00362515)
+
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.965007, 0, 0.262223, 0, 1, 0, -0.262223, 0, 0.965007, 0, 0.0905135, 0)
+visible = false
 mesh = SubResource("BoxMesh_5diue")
 skeleton = NodePath("")
 
@@ -40,8 +47,9 @@ mesh = SubResource("CylinderMesh_eid36")
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278449, 0.359614, 0.165038)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.399504, 0.244712)
+omni_range = 3.0
+omni_attenuation = 2.0
 
 [node name="PickupRange" type="Area3D" parent="." groups=["scanner"]]
 collision_layer = 16

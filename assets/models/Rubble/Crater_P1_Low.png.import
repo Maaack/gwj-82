@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m0yrlfvx2tu7"
+uid="uid://yaldlx06m0qn"
 path.s3tc="res://.godot/imported/Crater_P1_Low.png-f29bb4f9883ef1310dba39301ffb3cb8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "386146cbe269cb16bf0bf15ee03983ff"
 }
 
 [deps]

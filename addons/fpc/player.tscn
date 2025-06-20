@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=26 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://io70i8y4h6e7" path="res://addons/fpc/scanner_controller.gd" id="2_gs1dw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c4e1a4vatr3bd" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="PackedScene" uid="uid://b5qfcgoc6w08h" path="res://scenes/models/scanner.tscn" id="5_jwp2a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4cal"]
 albedo_color = Color(2.14182e-06, 0.585037, 0.13866, 1)
@@ -325,14 +326,6 @@ _data = {
 &"land_right": SubResource("Animation_vsknp")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_jwp2a"]
-size = Vector3(0.3, 0.5, 0.1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_pr7y4"]
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.15
-
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -364,15 +357,16 @@ controls = {
 &"SPRINT": "sprint"
 }
 
-[node name="ScannerController" type="Node3D" parent="." node_paths=PackedStringArray("hand_scanner_mesh", "camera")]
+[node name="ScannerController" type="Node3D" parent="." node_paths=PackedStringArray("camera", "hand_scanner")]
 script = ExtResource("2_gs1dw")
 scanner_object = ExtResource("3_gs1dw")
-hand_scanner_mesh = NodePath("../Head/MineScannerMesh")
 camera = NodePath("../Head/Camera")
-placement_range = 4
+placement_range = 3
+hand_scanner = NodePath("../Head/Scanner")
 
 [node name="MeshForEditor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_8q84s")
 script = ExtResource("2_v4cal")
 
@@ -402,14 +396,8 @@ libraries = {
 }
 speed_scale = 4.0
 
-[node name="MineScannerMesh" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(0.50327, 0.234816, -0.831613, 0.118866, 0.934412, 0.335777, 0.855915, -0.267837, 0.44235, 0.412426, -0.33479, -0.521559)
-mesh = SubResource("BoxMesh_jwp2a")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/MineScannerMesh"]
-transform = Transform3D(1, -1.49012e-08, 0, 8.19564e-08, 1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, 0.102854, 0.31727, -0.0103616)
-mesh = SubResource("CylinderMesh_pr7y4")
+[node name="Scanner" parent="Head" instance=ExtResource("5_jwp2a")]
+transform = Transform3D(0.208418, -0.23513, 0.447081, 0.956714, 0.0964436, 0.00674412, -0.203124, 0.212991, 0.490497, 0.204214, -0.155296, -0.243646)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
