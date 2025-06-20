@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfp3litfb5lx5"]
+
+[ext_resource type="Script" uid="uid://dge3g6ecaj8lh" path="res://scenes/prototype/procedural_level/items/item.gd" id="1_k14yu"]
+[ext_resource type="PackedScene" uid="uid://b5tje5cjcge1g" path="res://scenes/models/book.tscn" id="2_26k8t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5mcn"]
+size = Vector3(0.466675, 0.1, 0.376831)
+
+[node name="DiaryItem3D" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_k14yu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b5mcn")
+
+[node name="Book" parent="." instance=ExtResource("2_26k8t")]
+transform = Transform3D(0.221727, 0, 0, 0, 0.0476558, 0, 0, 0, 0.173368, 0, 0, 0)

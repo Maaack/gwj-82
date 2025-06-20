@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=31 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cg545hlmaa35g" path="res://scenes/prototype/procedural_level/zones/wooded_zone.tscn" id="10_x0w3f"]
 [ext_resource type="Script" path="res://scenes/prototype/procedural_level/levels/hints_control.gd" id="11_4xi07"]
 [ext_resource type="PackedScene" uid="uid://j4fgldo1orci" path="res://scenes/prototype/procedural_level/items/dog_tag.tscn" id="11_7q35e"]
+[ext_resource type="PackedScene" uid="uid://dfp3litfb5lx5" path="res://scenes/prototype/procedural_level/items/diary.tscn" id="14_yjv8o"]
 [ext_resource type="PackedScene" uid="uid://cj00alpq4m5qi" path="res://scenes/models/big_barbed_fence.tscn" id="21_def2w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxrxr"]
@@ -111,7 +112,7 @@ zone_size = Vector2(8, 8)
 level_zone_size = Vector2(4, 4)
 offset = Vector2(-12, -12)
 zone_container = NodePath("../Zones")
-item_scenes = Array[PackedScene]([ExtResource("11_7q35e")])
+item_scenes = Array[PackedScene]([ExtResource("11_7q35e"), ExtResource("14_yjv8o")])
 
 [node name="Zones" type="Node3D" parent="."]
 
