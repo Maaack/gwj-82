@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://butje4jh8bnwy"]
+[gd_scene load_steps=34 format=4 uid="uid://butje4jh8bnwy"]
 
 [ext_resource type="Script" uid="uid://dsukcbsd6to8n" path="res://scenes/prototype/procedural_level/levels/minefield.gd" id="1_284y0"]
 [ext_resource type="PackedScene" uid="uid://chcvilveq5xok" path="res://scenes/prototype/procedural_level/zones/base_mined_zone.tscn" id="2_5ieeo"]
 [ext_resource type="Texture2D" uid="uid://041vxf1v05vc" path="res://assets/kenney_prototype-textures/PNG/Light/texture_12.png" id="2_284y0"]
+[ext_resource type="Texture2D" uid="uid://3lacrewtgvkj" path="res://assets/textures/GroundTest.png" id="2_f2x5d"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/player.tscn" id="4_pxrxr"]
 [ext_resource type="PackedScene" uid="uid://bwtth7ep2bvkt" path="res://scenes/prototype/procedural_level/zones/bunker_zone.tscn" id="5_pvu0y"]
 [ext_resource type="Script" uid="uid://cbof4ouy7j7mf" path="res://scenes/prototype/procedural_level/zone_builder.gd" id="5_umyse"]
@@ -10,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dilxg26rbhlvj" path="res://scenes/prototype/procedural_level/zones/item_spawn_zone.tscn" id="6_4xi07"]
 [ext_resource type="PackedScene" uid="uid://c27ylt0j3ut1v" path="res://scenes/prototype/procedural_level/zones/crater_zone.tscn" id="6_def2w"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
-[ext_resource type="Script" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
+[ext_resource type="Script" uid="uid://bcouw4v4cd6oa" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
 [ext_resource type="PackedScene" uid="uid://dxef78y0fab4e" path="res://scenes/prototype/procedural_level/zones/rubble_zone.tscn" id="7_yjv8o"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
@@ -38,8 +39,19 @@ tonemap_mode = 2
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4gxaa"]
 points = PackedVector3Array(-64, 0, -64, -64, 0, 64, 64, 0, -64, 64, 0, 64)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_def2w"]
-data = PackedVector3Array(-16.125, -2, -16.125, 16, -2, -16, 16.125, -2, -16.125, 16, 2, 16, 16.125, 2, -16.125, 16.125, 2, 16.125, -16.125, 2, 16.125, 16, 2, 16, 16.125, 2, 16.125, 16, 2, -16, 16.125, 2, -16.125, 16, 2, 16, 16.125, 2, 16.125, 16.125, 2, -16.125, 16.125, -2, -16.125, 16.125, 2, -16.125, 16, 2, -16, -16, 2, -16, 16.125, -2, -16.125, 16.125, 2, -16.125, -16.125, 2, -16.125, 16.125, -2, 16.125, 16.125, 2, 16.125, 16.125, -2, -16.125, 16, -2, 16, 16.125, -2, 16.125, 16, -2, -16, 16.125, 2, 16.125, 16.125, -2, 16.125, -16.125, -2, 16.125, 16.125, -2, 16.125, 16, -2, 16, -16, -2, 16, 16, -2, -16, 16.125, -2, 16.125, 16.125, -2, -16.125, -16, -2, -16, -16.125, -2, -16.125, -16, -2, 16, -16.125, 2, 16.125, -16, 2, 16, 16, 2, 16, 16.125, -2, 16.125, -16, -2, 16, -16.125, -2, 16.125, -16.125, -2, 16.125, -16.125, -2, -16.125, -16.125, 2, -16.125, -16.125, -2, -16.125, -16, -2, -16, 16, -2, -16, 16.125, -2, -16.125, -16.125, 2, -16.125, -16.125, -2, -16.125, -16, -2, 16, -16.125, -2, -16.125, -16.125, -2, 16.125, -16, 2, -16, -16.125, 2, 16.125, -16.125, 2, -16.125, 16.125, 2, -16.125, -16, 2, -16, -16.125, 2, -16.125, -16.125, 2, -16.125, -16.125, 2, 16.125, -16.125, -2, 16.125, -16, 2, 16, -16.125, 2, 16.125, -16, 2, -16, -16.125, 2, 16.125, 16.125, 2, 16.125, -16.125, -2, 16.125, -16, -2, 16, 16, -2, 16, 16, 2, 16, 16, 2, 16, 16, -2, 16, 16, -2, -16, 16, 2, 16, -16, 2, 16, -16, -2, 16, -16, 2, -16, 16, 2, -16, 16, -2, -16, 16, -2, -16, -16, -2, -16, -16, 2, -16, 16, -2, -16, 16, 2, -16, 16, 2, 16, -16, -2, 16, -16, 2, 16, -16, 2, -16, -16, 2, -16, -16, -2, -16, -16, -2, 16)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1fyl"]
+transparency = 1
+albedo_texture = ExtResource("2_f2x5d")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hcaoa"]
+material = SubResource("StandardMaterial3D_k1fyl")
+size = Vector2(8, 32)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yjv8o"]
+data = PackedVector3Array(20, -2, -16, 20.125, -2, -16.125, -20, -2, -16, 20, 2, 16, 20.125, 2, -16.125, 20.125, 2, 16.125, 20, 2, 16, 20.125, 2, 16.125, -20, 2, 16, 20, 2, -16, 20.125, 2, -16.125, 20, 2, 16, 20.125, 2, 16.125, 20.125, 2, -16.125, 20.125, -2, -16.125, 20.125, 2, -16.125, 20, 2, -16, -20.125, 2, -16.125, 20.125, -2, -16.125, 20.125, 2, -16.125, -20.125, 2, -16.125, 20.125, -2, 16.125, 20.125, 2, 16.125, 20.125, -2, -16.125, 20, -2, 16, 20.125, -2, 16.125, 20, -2, -16, 20.125, 2, 16.125, 20.125, -2, 16.125, -20.125, -2, 16.125, 20.125, -2, 16.125, 20, -2, 16, -20.125, -2, 16.125, 20, -2, -16, 20.125, -2, 16.125, 20.125, -2, -16.125, -20, -2, -16, -20.125, -2, -16.125, -20, -2, 16, -20.125, 2, 16.125, -20, 2, 16, 20.125, 2, 16.125, -20, -2, 16, -20.125, -2, 16.125, 20, -2, 16, -20.125, -2, 16.125, -20.125, -2, -16.125, -20.125, 2, -16.125, -20.125, -2, -16.125, -20, -2, -16, 20.125, -2, -16.125, 20.125, -2, -16.125, -20.125, 2, -16.125, -20.125, -2, -16.125, -20, -2, 16, -20.125, -2, -16.125, -20.125, -2, 16.125, -20, 2, -16, -20.125, 2, 16.125, -20.125, 2, -16.125, -20, 2, -16, -20.125, 2, -16.125, 20, 2, -16, -20.125, 2, -16.125, -20.125, 2, 16.125, -20.125, -2, 16.125, -20, 2, 16, -20.125, 2, 16.125, -20, 2, -16, -20.125, 2, 16.125, 20.125, 2, 16.125, -20.125, -2, 16.125, 20, -2, 16, 20, 2, 16, -20, -2, 16, 20, 2, 16, 20, -2, 16, 20, -2, -16, 20, 2, 16, -20, 2, 16, -20, -2, 16, -20, 2, -16, 20, 2, -16, 20, -2, -16, -20, -2, -16, -20, 2, -16, 20, -2, -16, 20, -2, -16, 20, 2, -16, 20, 2, 16, -20, -2, 16, -20, 2, 16, -20, 2, -16, -20, 2, -16, -20, -2, -16, -20, -2, 16)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly8ib"]
 albedo_texture = ExtResource("2_284y0")
@@ -67,7 +79,7 @@ bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.54902)
 
 [node name="Minefield" type="Node3D" node_paths=PackedStringArray("zone_builder") groups=["item_spawner"]]
 script = ExtResource("1_284y0")
-zone_builder = NodePath("ZoneBuilder")
+zone_builder = NodePath("HardZoneBuilder")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -84,12 +96,16 @@ shadow_enabled = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground"]
 shape = SubResource("ConvexPolygonShape3D_4gxaa")
 
+[node name="GroundMesh" type="MeshInstance3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+mesh = SubResource("PlaneMesh_hcaoa")
+
 [node name="Walls" type="StaticBody3D" parent="Environment"]
 collision_mask = 2
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("ConcavePolygonShape3D_def2w")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+shape = SubResource("ConcavePolygonShape3D_yjv8o")
 
 [node name="WallMesh" type="MeshInstance3D" parent="Environment/Walls"]
 visible = false
@@ -97,27 +113,35 @@ mesh = SubResource("ArrayMesh_7tvm6")
 skeleton = NodePath("../..")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
 visible = false
-size = Vector3(32.25, 4, 32.25)
+size = Vector3(40.25, 4, 32.25)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Walls/CSGBox3D"]
 operation = 2
-size = Vector3(32, 4, 32)
+size = Vector3(40, 4, 32)
 
-[node name="ZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
+[node name="HardZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
 script = ExtResource("5_umyse")
-zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("5_pvu0y"), ExtResource("6_def2w"), ExtResource("7_yjv8o"), ExtResource("8_f2x5d"), ExtResource("9_hcaoa"), ExtResource("10_x0w3f"), ExtResource("6_2bvvl"), ExtResource("6_4xi07"), ExtResource("6_4xi07"), ExtResource("6_4xi07")])
+zone_scenes = Array[PackedScene]([ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("2_5ieeo"), ExtResource("5_pvu0y"), ExtResource("10_x0w3f"), ExtResource("6_4xi07"), ExtResource("6_4xi07"), ExtResource("6_4xi07")])
 zone_size = Vector2(8, 8)
-level_zone_size = Vector2(4, 4)
+level_zone_size = Vector2(2, 4)
 offset = Vector2(-12, -12)
 zone_container = NodePath("../Zones")
 item_scenes = Array[PackedScene]([ExtResource("11_7q35e"), ExtResource("14_yjv8o")])
 
+[node name="EasyZoneBuilder" type="Node" parent="." node_paths=PackedStringArray("zone_container")]
+script = ExtResource("5_umyse")
+zone_scenes = Array[PackedScene]([ExtResource("6_2bvvl"), ExtResource("6_def2w"), ExtResource("7_yjv8o"), ExtResource("8_f2x5d"), ExtResource("9_hcaoa"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl"), ExtResource("6_2bvvl")])
+zone_size = Vector2(8, 8)
+level_zone_size = Vector2(2, 4)
+offset = Vector2(4, -12)
+zone_container = NodePath("../Zones")
+
 [node name="Zones" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("4_pxrxr")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.99269, 0, 9.64208)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20.993, 0, 0)
 base_speed = 4.0
 
 [node name="ItemInteractionRayCast3D" type="RayCast3D" parent="Player/Head" index="3"]
@@ -129,8 +153,9 @@ script = ExtResource("7_rr5jj")
 script = ExtResource("7_s6wb3")
 ghost_scene = ExtResource("7_2bvvl")
 ghosts_container = NodePath("../Ghosts")
-ring_inner_radius = 22.0
-ring_outer_radius = 44.0
+ring_inner_radius = 30.0
+ring_outer_radius = 50.0
+spawn_delay = 5.0
 
 [node name="Ghosts" type="Node3D" parent="."]
 
@@ -209,7 +234,7 @@ layout_mode = 2
 text = "Try again?"
 
 [node name="ExitArea3D" parent="." instance=ExtResource("9_7tvm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 
 [node name="Big Barbed Fence" parent="." instance=ExtResource("21_def2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8367, 0.0232544, 16)
@@ -259,29 +284,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.156, 0.0232544, -16)
 [node name="Big Barbed Fence16" parent="." instance=ExtResource("21_def2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3185, 0.0232544, -16)
 
+[node name="Big Barbed Fence33" parent="." instance=ExtResource("21_def2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.486, 0.0232544, -16)
+
+[node name="Big Barbed Fence34" parent="." instance=ExtResource("21_def2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6485, 0.0232544, -16)
+
+[node name="Big Barbed Fence35" parent="." instance=ExtResource("21_def2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.486, 0.0232544, 16)
+
+[node name="Big Barbed Fence36" parent="." instance=ExtResource("21_def2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6485, 0.0232544, 16)
+
 [node name="Big Barbed Fence17" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, 14.5688)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, 14.5688)
 
 [node name="Big Barbed Fence18" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, 10.4063)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, 10.4063)
 
 [node name="Big Barbed Fence19" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, 6.2375)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, 6.2375)
 
 [node name="Big Barbed Fence20" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, 2.07499)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, 2.07499)
 
 [node name="Big Barbed Fence21" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, -2.08826)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, -2.08826)
 
 [node name="Big Barbed Fence22" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, -6.25077)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, -6.25077)
 
 [node name="Big Barbed Fence23" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, -10.4239)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, -10.4239)
 
 [node name="Big Barbed Fence24" parent="." instance=ExtResource("21_def2w")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0.0232544, -14.5864)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 24, 0.0232544, -14.5864)
 
 [node name="Big Barbed Fence25" parent="." instance=ExtResource("21_def2w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 0.0232544, 14.5688)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://io70i8y4h6e7" path="res://addons/fpc/scanner_controller.gd" id="2_gs1dw"]
 [ext_resource type="Script" uid="uid://duhgg3gjt08hn" path="res://addons/fpc/mesh.gd" id="2_v4cal"]
-[ext_resource type="PackedScene" uid="uid://c4e1a4vatr3bd" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
+[ext_resource type="PackedScene" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="PackedScene" uid="uid://b5qfcgoc6w08h" path="res://scenes/models/scanner.tscn" id="5_jwp2a"]
