@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dilxg26rbhlvj" path="res://scenes/prototype/procedural_level/zones/item_spawn_zone.tscn" id="6_4xi07"]
 [ext_resource type="PackedScene" uid="uid://c27ylt0j3ut1v" path="res://scenes/prototype/procedural_level/zones/crater_zone.tscn" id="6_def2w"]
 [ext_resource type="PackedScene" uid="uid://db4jhwp7kgklx" path="res://scenes/prototype/ghost_3d/ghost_3d.tscn" id="7_2bvvl"]
-[ext_resource type="Script" uid="uid://bcouw4v4cd6oa" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
+[ext_resource type="Script" path="res://scenes/prototype/procedural_level/item_interaction_ray_cast_3d.gd" id="7_rr5jj"]
 [ext_resource type="Script" uid="uid://leftwystr33a" path="res://scenes/prototype/procedural_level/levels/ghost_spawner.gd" id="7_s6wb3"]
 [ext_resource type="PackedScene" uid="uid://dxef78y0fab4e" path="res://scenes/prototype/procedural_level/zones/rubble_zone.tscn" id="7_yjv8o"]
 [ext_resource type="Script" uid="uid://c5x1emulijaxf" path="res://scenes/prototype/killed_warning.gd" id="8_2bvvl"]
