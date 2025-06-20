@@ -1,18 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://j4fgldo1orci"]
+[gd_scene load_steps=4 format=3 uid="uid://j4fgldo1orci"]
 
 [ext_resource type="Script" uid="uid://dge3g6ecaj8lh" path="res://scenes/prototype/procedural_level/items/item.gd" id="1_b5mcn"]
+[ext_resource type="PackedScene" uid="uid://du7rya5fk4vwi" path="res://scenes/models/dog_tag.tscn" id="2_ekds1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5mcn"]
-size = Vector3(0.5, 0.1, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ild3n"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b5mcn"]
-material = SubResource("StandardMaterial3D_ild3n")
-size = Vector3(0.5, 0.1, 0.5)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ild3n"]
+size = Vector3(0.249512, 0.1, 0.248779)
 
 [node name="DogTagItem3D" type="CharacterBody3D"]
 collision_layer = 16
@@ -22,17 +14,8 @@ script = ExtResource("1_b5mcn")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_b5mcn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137734, 0.00525868, -0.00252104)
-mesh = SubResource("BoxMesh_b5mcn")
-skeleton = NodePath("")
+[node name="DogTag" parent="." instance=ExtResource("2_ekds1")]
+transform = Transform3D(0.052, 0, 0, 0, 0.006, 0, 0, 0, 0.052, -0.0293841, 0, -0.0362357)
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 0
-collision_mask = 2
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CylinderShape3D_ild3n")
+[node name="DogTag2" parent="." instance=ExtResource("2_ekds1")]
+transform = Transform3D(0.0367696, 0, 0.0367696, 0, 0.006, 0, -0.0367696, 0, 0.0367696, -0.0115842, 0.0186654, -0.0426275)
