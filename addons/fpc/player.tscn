@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=27 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
+[ext_resource type="Script" uid="uid://io70i8y4h6e7" path="res://addons/fpc/scanner_controller.gd" id="2_gs1dw"]
 [ext_resource type="Script" uid="uid://duhgg3gjt08hn" path="res://addons/fpc/mesh.gd" id="2_v4cal"]
+[ext_resource type="PackedScene" uid="uid://c4e1a4vatr3bd" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" uid="uid://bjuwilih0xk1w" path="res://addons/fpc/mine_detector.gd" id="5_8q84s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4cal"]
 albedo_color = Color(2.14182e-06, 0.585037, 0.13866, 1)
@@ -324,6 +325,14 @@ _data = {
 &"land_right": SubResource("Animation_vsknp")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_jwp2a"]
+size = Vector3(0.3, 0.5, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pr7y4"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.15
+
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -331,10 +340,6 @@ MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_v4cal"]
-height = 4.0
-radius = 10.0
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -358,6 +363,13 @@ controls = {
 &"RIGHT": "move_right",
 &"SPRINT": "sprint"
 }
+
+[node name="ScannerController" type="Node3D" parent="." node_paths=PackedStringArray("hand_scanner_mesh", "camera")]
+script = ExtResource("2_gs1dw")
+scanner_object = ExtResource("3_gs1dw")
+hand_scanner_mesh = NodePath("../Head/MineScannerMesh")
+camera = NodePath("../Head/Camera")
+placement_range = 4
 
 [node name="MeshForEditor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -389,6 +401,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_qeg5r")
 }
 speed_scale = 4.0
+
+[node name="MineScannerMesh" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.50327, 0.234816, -0.831613, 0.118866, 0.934412, 0.335777, 0.855915, -0.267837, 0.44235, 0.412426, -0.33479, -0.521559)
+mesh = SubResource("BoxMesh_jwp2a")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/MineScannerMesh"]
+transform = Transform3D(1, -1.49012e-08, 0, 8.19564e-08, 1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, 0.102854, 0.31727, -0.0103616)
+mesh = SubResource("CylinderMesh_pr7y4")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -423,12 +444,3 @@ target_position = Vector3(0, 0.5, 0)
 [node name="EditorModule" type="Node" parent="." node_paths=PackedStringArray("CHARACTER")]
 script = ExtResource("3_v3ckk")
 CHARACTER = NodePath("..")
-
-[node name="MineDetector" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 4
-script = ExtResource("5_8q84s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MineDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("CylinderShape3D_v4cal")

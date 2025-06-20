@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4e1a4vatr3bd"]
+
+[ext_resource type="Script" uid="uid://bjuwilih0xk1w" path="res://addons/fpc/scanner_object.gd" id="1_5diue"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8q84s"]
+radius = 8.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_5diue"]
+size = Vector3(0.3, 0.5, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eid36"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5diue"]
+radius = 0.8
+
+[node name="ScannerObject" type="Area3D" node_paths=PackedStringArray("sfx", "light", "timer")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_5diue")
+sfx = NodePath("SFX")
+light = NodePath("OmniLight3D")
+timer = NodePath("Timer")
+
+[node name="ScanRadius" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("SphereShape3D_8q84s")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965007, 0, 0.262223, 0, 1, 0, -0.262223, 0, 0.965007, 0, 0.0905135, 0)
+mesh = SubResource("BoxMesh_5diue")
+skeleton = NodePath("")
+
+[node name="Detail" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, -1.49012e-08, 0, 8.19564e-08, 1, -1.49012e-08, 2.98023e-08, 1.49012e-08, 1, 0.102854, 0.31727, -0.0103616)
+mesh = SubResource("CylinderMesh_eid36")
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278449, 0.359614, 0.165038)
+visible = false
+
+[node name="PickupRange" type="Area3D" parent="." groups=["scanner"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupRange"]
+shape = SubResource("SphereShape3D_5diue")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
