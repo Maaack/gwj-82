@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgwwifw26vge6"]
+
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_avnkf"]
+[ext_resource type="PackedScene" uid="uid://crtcyuabofb0q" path="res://assets/models/Fence/FenceCapb1.glb" id="2_e5shn"]
+[ext_resource type="PackedScene" uid="uid://bm4obdlq3opye" path="res://assets/models/Fence/FenceCapb2.glb" id="3_5k2x4"]
+[ext_resource type="PackedScene" uid="uid://l6tk8yckawdg" path="res://assets/models/Fence/FenceCapa1.glb" id="4_1riu2"]
+[ext_resource type="PackedScene" uid="uid://cs8oy5ij73frv" path="res://assets/models/Fence/FenceSingleCap.glb" id="5_odgb6"]
+
+[node name="FencedZone" instance=ExtResource("1_avnkf")]
+
+[node name="FenceCapb1" parent="." index="1" instance=ExtResource("2_e5shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37421, 0.718701, 1.50326)
+
+[node name="FenceCapb2" parent="." index="2" instance=ExtResource("3_5k2x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56563, 0.643766, -3.59872)
+
+[node name="FenceCapb3" parent="." index="3" instance=ExtResource("3_5k2x4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.05505, 0.643766, 3.40128)
+
+[node name="FenceCapb4" parent="." index="4" instance=ExtResource("3_5k2x4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.43437, 0.643766, 3.40128)
+
+[node name="FenceCapa1" parent="." index="5" instance=ExtResource("4_1riu2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.264598, 0.636324, 3.4113)
+
+[node name="FenceSingleCap" parent="." index="6" instance=ExtResource("5_odgb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55474, 0.69599, 0.421082)
+
+[node name="FenceCapb5" parent="." index="7" instance=ExtResource("2_e5shn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0154426, 0.7187, -3.5168)

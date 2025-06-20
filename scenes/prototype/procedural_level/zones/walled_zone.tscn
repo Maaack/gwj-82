@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5hypqwe70qdk"]
+
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_jalti"]
+[ext_resource type="PackedScene" uid="uid://3ers6qxrqiqe" path="res://assets/models/Walls/WallCapa1.glb" id="2_f0red"]
+[ext_resource type="PackedScene" uid="uid://bc2k6itv7s0i0" path="res://assets/models/Walls/WallCapb1.glb" id="3_kig4l"]
+[ext_resource type="PackedScene" uid="uid://dusik70fx1nn2" path="res://assets/models/Walls/WallMain.glb" id="4_ym5pk"]
+
+[node name="WalledZone" instance=ExtResource("1_jalti")]
+
+[node name="WallCapa12" parent="." index="1" instance=ExtResource("2_f0red")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.679075, 3.52496)
+
+[node name="WallCapb12" parent="." index="2" instance=ExtResource("3_kig4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41973, 0.764725, -3.57479)
+
+[node name="WallCapb14" parent="." index="3" instance=ExtResource("3_kig4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58027, 0.764725, 3.52306)
+
+[node name="WallMain" parent="." index="4" instance=ExtResource("4_ym5pk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.48883, 0.783672, -1.12702)
+
+[node name="WallMain2" parent="." index="5" instance=ExtResource("4_ym5pk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.51117, 0.783672, -0.127019)
+
+[node name="WallCapa13" parent="." index="6" instance=ExtResource("2_f0red")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490322, 0.659268, -3.55508)
+
+[node name="WallCapb13" parent="." index="7" instance=ExtResource("3_kig4l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.43309, 0.764725, 2.96161)
