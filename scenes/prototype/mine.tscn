@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca22lfd8l684h"]
+[gd_scene load_steps=6 format=3 uid="uid://ca22lfd8l684h"]
 
 [ext_resource type="Script" uid="uid://dkmgre7pjxnjn" path="res://scenes/prototype/mine.gd" id="1_bidgv"]
 [ext_resource type="Texture2D" uid="uid://bwrru0c08q3xw" path="res://assets/kenney_prototype-textures/PNG/Red/texture_07.png" id="1_hd0tk"]
-[ext_resource type="AudioStream" uid="uid://b700qyl10fldq" path="res://assets/sfx/mine_explode.ogg" id="3_r18uc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bidgv"]
 albedo_texture = ExtResource("1_hd0tk")
@@ -16,11 +15,10 @@ height = 0.3
 height = 17.0
 radius = 0.3
 
-[node name="Mine" type="Area3D" node_paths=PackedStringArray("sfx") groups=["mine"]]
+[node name="Mine" type="Area3D" groups=["mine"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_bidgv")
-sfx = NodePath("AudioStreamPlayer3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_bidgv")
@@ -32,6 +30,5 @@ shape = SubResource("CylinderShape3D_bidgv")
 debug_color = Color(1, 0, 0, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_r18uc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
