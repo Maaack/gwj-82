@@ -13,7 +13,7 @@ func trigger() -> void:
 	%MineMesh.show()
 	var tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(%MineMesh,"position:y",1.45,0.3)
+	tween.tween_property(%MineMesh,"position:y",1.35,0.3)
 	await tween.finished
 	player.immobile = true
 	explode()
