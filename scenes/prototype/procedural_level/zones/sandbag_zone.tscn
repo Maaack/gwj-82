@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://bojeekan6h0gc"]
+
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_ybelx"]
+[ext_resource type="PackedScene" uid="uid://be3tjlnx2fvdc" path="res://assets/models/Sandbages/SB2.glb" id="2_evrpo"]
+[ext_resource type="PackedScene" uid="uid://cgcx5l0toderb" path="res://assets/models/Sandbages/SB3.glb" id="3_s1scm"]
+[ext_resource type="PackedScene" uid="uid://13jj14dvm50g" path="res://assets/models/Sandbages/SB4.glb" id="4_v4egg"]
+[ext_resource type="PackedScene" uid="uid://dx7snatwdmdsa" path="res://assets/models/Sandbages/SB5.glb" id="5_v4egg"]
+
+[node name="SandbagZone" instance=ExtResource("1_ybelx")]
+
+[node name="SB2" parent="." index="1" instance=ExtResource("2_evrpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121329, 0.438551, 2.91998)
+
+[node name="SB3" parent="." index="2" instance=ExtResource("3_s1scm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04771, 0.327277, -2.94895)
+
+[node name="SB4" parent="." index="3" instance=ExtResource("4_v4egg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83598, 0.280594, -2.97055)
+
+[node name="SB5" parent="." index="4" instance=ExtResource("5_v4egg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.49667, 0.376561, 0.367237)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c27ylt0j3ut1v"]
+
+[ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_fjbej"]
+[ext_resource type="PackedScene" uid="uid://yivuygsn0h2r" path="res://assets/models/Rubble/Crater.glb" id="2_g3py7"]
+
+[node name="CraterZone" instance=ExtResource("1_fjbej")]
+
+[node name="Crater" parent="." index="1" instance=ExtResource("2_g3py7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256359, 0)
