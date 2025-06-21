@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg545hlmaa35g"]
+[gd_scene load_steps=7 format=3 uid="uid://cg545hlmaa35g"]
 
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_pk2em"]
+[ext_resource type="Material" uid="uid://cwhp7k650kjwu" path="res://scenes/prototype/procedural_level/zones/ground.material" id="2_mp6ga"]
 [ext_resource type="PackedScene" uid="uid://ci5mgleigx3x5" path="res://assets/models/Trees/MidTree.glb" id="2_vya4e"]
 [ext_resource type="PackedScene" uid="uid://bqyvvwg4v6nmd" path="res://assets/models/Trees/SkullTree.glb" id="3_mp6ga"]
 [ext_resource type="PackedScene" uid="uid://bq4ehe0s6qswr" path="res://assets/models/Trees/TallTree.glb" id="4_2ony0"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ony0"]
+material = ExtResource("2_mp6ga")
+size = Vector2(8, 8)
+
 [node name="WoodedZone" instance=ExtResource("1_pk2em")]
+
+[node name="GroundMesh" parent="Ground" index="1"]
+mesh = SubResource("PlaneMesh_2ony0")
 
 [node name="MidTree" parent="." index="1" instance=ExtResource("2_vya4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1012, 0.627225, 2.87098)

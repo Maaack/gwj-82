@@ -443,7 +443,15 @@ func update_debug_menu_per_tick():
 
 
 func _unhandled_input(event : InputEvent):
-	handle_mouse_capture()
+	if Input.is_action_just_pressed("pause"):
+		if !immobile:
+			immobile = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			immobile = false
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	#handle_mouse_capture()
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouseInput.x += event.relative.x
 		mouseInput.y += event.relative.y

@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxef78y0fab4e"]
+[gd_scene load_steps=6 format=3 uid="uid://dxef78y0fab4e"]
 
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_82kiu"]
 [ext_resource type="PackedScene" uid="uid://e2lvfy6mc4w3" path="res://assets/models/Rubble/Rubble1.glb" id="2_d1kwu"]
+[ext_resource type="Material" uid="uid://cwhp7k650kjwu" path="res://scenes/prototype/procedural_level/zones/ground.material" id="2_w6fxc"]
 [ext_resource type="PackedScene" uid="uid://bnl0nc75nfyhm" path="res://assets/models/Rubble/Rubble2.glb" id="3_w6fxc"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_k321s"]
+material = ExtResource("2_w6fxc")
+size = Vector2(8, 8)
+
 [node name="RubbleZone" instance=ExtResource("1_82kiu")]
+
+[node name="GroundMesh" parent="Ground" index="1"]
+mesh = SubResource("PlaneMesh_k321s")
 
 [node name="Rubble1" parent="." index="1" instance=ExtResource("2_d1kwu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79319, 0.12594, -1.88726)

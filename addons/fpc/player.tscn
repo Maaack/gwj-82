@@ -1,12 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=31 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://c8uqqw4rqtkis" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://io70i8y4h6e7" path="res://addons/fpc/scanner_controller.gd" id="2_gs1dw"]
 [ext_resource type="Script" uid="uid://duhgg3gjt08hn" path="res://addons/fpc/mesh.gd" id="2_v4cal"]
-[ext_resource type="PackedScene" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
+[ext_resource type="PackedScene" uid="uid://c4e1a4vatr3bd" path="res://scenes/prototype/procedural_level/items/scanner_object.tscn" id="3_gs1dw"]
 [ext_resource type="Script" uid="uid://dcm2u282hfm2p" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://da8g11rgfeg8t" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="PackedScene" uid="uid://b5qfcgoc6w08h" path="res://scenes/models/scanner.tscn" id="5_jwp2a"]
+[ext_resource type="PackedScene" uid="uid://bnfo54amgyv43" path="res://scenes/prototype/procedural_level/items/scanner_in_hand/scanner_in_hand.tscn" id="6_yy3xt"]
 [ext_resource type="AudioStream" uid="uid://3aya0shefgd" path="res://assets/sfx/step1.ogg" id="8_efggd"]
 [ext_resource type="AudioStream" uid="uid://728g7nqbvgi" path="res://assets/sfx/step2.ogg" id="9_yy3xt"]
 [ext_resource type="AudioStream" uid="uid://r24yrtydgmmj" path="res://assets/sfx/step3.ogg" id="10_wmdvw"]
@@ -404,13 +405,6 @@ controls = {
 &"SPRINT": "sprint"
 }
 
-[node name="ScannerController" type="Node3D" parent="." node_paths=PackedStringArray("camera", "hand_scanner")]
-script = ExtResource("2_gs1dw")
-scanner_object = ExtResource("3_gs1dw")
-camera = NodePath("../Head/Camera")
-placement_range = 3
-hand_scanner = NodePath("../Head/Scanner")
-
 [node name="MeshForEditor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
@@ -425,6 +419,13 @@ shape = SubResource("CapsuleShape3D_uy03j")
 libraries = {
 &"": SubResource("AnimationLibrary_5e5t5")
 }
+
+[node name="ScannerController" type="Node3D" parent="." node_paths=PackedStringArray("camera", "hand_scanner")]
+script = ExtResource("2_gs1dw")
+scanner_object = ExtResource("3_gs1dw")
+camera = NodePath("../Head/Camera")
+placement_range = 3
+hand_scanner = NodePath("../Head/ScannerPlaceable")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -443,9 +444,12 @@ libraries = {
 }
 speed_scale = 4.0
 
-[node name="Scanner" parent="Head" instance=ExtResource("5_jwp2a")]
+[node name="ScannerPlaceable" parent="Head" instance=ExtResource("5_jwp2a")]
 transform = Transform3D(0.208418, -0.23513, 0.447081, 0.956714, 0.0964436, 0.00674412, -0.203124, 0.212991, 0.490497, 0.204214, -0.155296, -0.243646)
+visible = false
 cast_shadow = 0
+
+[node name="ScannerInHand" parent="Head" instance=ExtResource("6_yy3xt")]
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3

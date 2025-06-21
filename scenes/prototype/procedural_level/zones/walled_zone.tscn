@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5hypqwe70qdk"]
+[gd_scene load_steps=7 format=3 uid="uid://c5hypqwe70qdk"]
 
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_jalti"]
 [ext_resource type="PackedScene" uid="uid://3ers6qxrqiqe" path="res://assets/models/Walls/WallCapa1.glb" id="2_f0red"]
+[ext_resource type="Material" uid="uid://cwhp7k650kjwu" path="res://scenes/prototype/procedural_level/zones/ground.material" id="2_kig4l"]
 [ext_resource type="PackedScene" uid="uid://bc2k6itv7s0i0" path="res://assets/models/Walls/WallCapb1.glb" id="3_kig4l"]
 [ext_resource type="PackedScene" uid="uid://dusik70fx1nn2" path="res://assets/models/Walls/WallMain.glb" id="4_ym5pk"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_ym5pk"]
+material = ExtResource("2_kig4l")
+size = Vector2(8, 8)
+
 [node name="WalledZone" instance=ExtResource("1_jalti")]
+
+[node name="GroundMesh" parent="Ground" index="1"]
+mesh = SubResource("PlaneMesh_ym5pk")
 
 [node name="WallCapa12" parent="." index="1" instance=ExtResource("2_f0red")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.679075, 3.52496)

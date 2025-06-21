@@ -4,6 +4,7 @@ extends Area3D
 signal exploded
 
 @export var sfx: AudioStreamPlayer3D
+@export var sprite: AnimatedSprite3D
 
 @export_tool_button("Trigger") var trigger_action = trigger
 @export_tool_button("Reset") var reset_action = reset

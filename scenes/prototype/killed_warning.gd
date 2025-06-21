@@ -1,5 +1,6 @@
 extends Control
 
+signal killed
 
 const KILLED_BY_MINE_STRING = "Killed by a mine."
 const KILLED_BY_GHOST_STRING = "Killed by a ghost."
@@ -14,18 +15,19 @@ const KILLED_BY_GHOST_STRING = "Killed by a ghost."
 func _on_killed_by_mine() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	killed_label.text = KILLED_BY_MINE_STRING
-	warning_panel.show()
+	show()
 
 func _on_killed_by_ghost() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	killed_label.text = KILLED_BY_GHOST_STRING
-	warning_panel.show()
+	show()
 
 func _on_ghost_spawned(ghost : Node3D) -> void:
 	if is_instance_valid(ghost):
 		ghost.killed.connect(_on_killed_by_ghost)
 
 func _ready() -> void:
+	hide()
 	ghost_spawner.ghost_spawned.connect(_on_ghost_spawned)
 	for mine in active_mines:
 		if is_instance_valid(mine):

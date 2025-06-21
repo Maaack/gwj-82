@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2xam7kki8lhx"
+uid="uid://ckdj6hln0wyt7"
 path.s3tc="res://.godot/imported/Rocks1_P1_Low.png-e12b9d74941ae5640eb2e0d7ff212648.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "386146cbe269cb16bf0bf15ee03983ff"
 }
 
 [deps]

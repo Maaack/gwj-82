@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bojeekan6h0gc"]
+[gd_scene load_steps=8 format=3 uid="uid://bojeekan6h0gc"]
 
 [ext_resource type="PackedScene" uid="uid://cldtynfevo0tu" path="res://scenes/prototype/procedural_level/zones/base_zone.tscn" id="1_ybelx"]
+[ext_resource type="Material" uid="uid://cwhp7k650kjwu" path="res://scenes/prototype/procedural_level/zones/ground.material" id="2_aht5h"]
 [ext_resource type="PackedScene" uid="uid://be3tjlnx2fvdc" path="res://assets/models/Sandbages/SB2.glb" id="2_evrpo"]
 [ext_resource type="PackedScene" uid="uid://cgcx5l0toderb" path="res://assets/models/Sandbages/SB3.glb" id="3_s1scm"]
 [ext_resource type="PackedScene" uid="uid://13jj14dvm50g" path="res://assets/models/Sandbages/SB4.glb" id="4_v4egg"]
 [ext_resource type="PackedScene" uid="uid://dx7snatwdmdsa" path="res://assets/models/Sandbages/SB5.glb" id="5_v4egg"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_uwuem"]
+material = ExtResource("2_aht5h")
+size = Vector2(8, 8)
+
 [node name="SandbagZone" instance=ExtResource("1_ybelx")]
+
+[node name="GroundMesh" parent="Ground" index="1"]
+mesh = SubResource("PlaneMesh_uwuem")
 
 [node name="SB2" parent="." index="1" instance=ExtResource("2_evrpo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.121329, 0.438551, 2.91998)

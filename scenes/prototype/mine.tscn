@@ -17,11 +17,12 @@ height = 0.3
 height = 17.0
 radius = 0.2
 
-[node name="Mine" type="Area3D" node_paths=PackedStringArray("sfx") groups=["mine"]]
+[node name="Mine" type="Area3D" node_paths=PackedStringArray("sfx", "sprite") groups=["mine"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_bidgv")
 sfx = NodePath("AudioStreamPlayer3D")
+sprite = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -39,6 +40,5 @@ stream = ExtResource("3_r18uc")
 [node name="MineMesh" parent="." instance=ExtResource("4_ys65b")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
-visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
