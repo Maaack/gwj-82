@@ -15,7 +15,7 @@ uv1_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_45w5k"]
 material = SubResource("StandardMaterial3D_k1fyl")
-size = Vector2(8, 8)
+size = Vector2(16, 16)
 
 [node name="Tile" type="Node3D"]
 
@@ -30,49 +30,193 @@ mesh = SubResource("PlaneMesh_45w5k")
 [node name="Mines" type="Node3D" parent="."]
 
 [node name="Mine" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
 
 [node name="Mine2" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
 
 [node name="Mine3" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
 
 [node name="Mine4" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
 [node name="Mine5" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
 
 [node name="Mine6" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
 [node name="Mine7" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
-
-[node name="Mine8" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-
-[node name="Mine10" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
-
-[node name="Mine11" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
-
-[node name="Mine12" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
-
-[node name="Mine9" parent="Mines" instance=ExtResource("2_lxc3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
 
-[node name="Mine13" parent="Mines" instance=ExtResource("2_lxc3o")]
+[node name="Mine8" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="Mine10" parent="Mines" instance=ExtResource("2_lxc3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
 
+[node name="Mine11" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="Mine12" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
+
+[node name="Mine9" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
+
+[node name="Mine13" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -5)
+
 [node name="Mine14" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
 
 [node name="Mine15" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -1)
 
 [node name="Mine16" parent="Mines" instance=ExtResource("2_lxc3o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -7)
+
+[node name="Mine17" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+
+[node name="Mine18" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="Mine19" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
+
+[node name="Mine20" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
+
+[node name="Mine21" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
+
+[node name="Mine22" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Mine23" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+
+[node name="Mine24" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="Mine25" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+
+[node name="Mine26" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="Mine27" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
+
+[node name="Mine28" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+
+[node name="Mine29" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
+
+[node name="Mine30" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+
+[node name="Mine31" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
+[node name="Mine32" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
+
+[node name="Mine33" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="Mine34" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+
+[node name="Mine35" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
+
+[node name="Mine36" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
+
+[node name="Mine37" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -5)
+
+[node name="Mine38" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+
+[node name="Mine39" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
+
+[node name="Mine40" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="Mine41" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
+
+[node name="Mine42" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -1)
+
+[node name="Mine43" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
+
+[node name="Mine44" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+
+[node name="Mine45" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+
+[node name="Mine46" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+
+[node name="Mine47" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Mine48" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
+
+[node name="Mine49" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+
+[node name="Mine50" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5)
+
+[node name="Mine51" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
+
+[node name="Mine52" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
+
+[node name="Mine53" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
+
+[node name="Mine54" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
+
+[node name="Mine55" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5)
+
+[node name="Mine56" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Mine57" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+
+[node name="Mine58" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
+
+[node name="Mine59" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+
+[node name="Mine60" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
+
+[node name="Mine61" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="Mine62" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+
+[node name="Mine63" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="Mine64" parent="Mines" instance=ExtResource("2_lxc3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)

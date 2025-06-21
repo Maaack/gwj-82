@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://3lacrewtgvkj" path="res://assets/textures/GroundTest.png" id="1_vylr5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxj75"]
-points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+points = PackedVector3Array(-8, 0, -8, -8, 0, 8, 8, 0, -8, 8, 0, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vylr5"]
 transparency = 1
@@ -14,7 +14,7 @@ uv1_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p66r1"]
 material = SubResource("StandardMaterial3D_vylr5")
-size = Vector2(8, 8)
+size = Vector2(16, 16)
 
 [node name="Zone" type="Node3D"]
 
